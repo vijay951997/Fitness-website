@@ -12,7 +12,9 @@ export const site = {
   tagline: "Coaching that rebuilds the body, not just the physique",
   description:
     "Certified personal trainer in Chennai offering online coaching, prehab & rehab programming, and personalised nutrition. Posture correction, fat loss, body recomposition and injury recovery.",
-  url: "https://fitwithvijay.com", // ← change once you buy a domain
+  // Live URL — used for SEO tags, the sitemap and social preview links.
+  // Change this (and basePath in next.config.ts) if you buy a domain.
+  url: "https://vijay951997.github.io/Fitness-website",
   city: "Chennai",
   region: "Tamil Nadu",
   country: "India",

@@ -1,5 +1,8 @@
 import { cx } from "./ui";
 
+/** basePath is not applied to raw url() strings, so prefix them by hand. */
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 /**
  * Photo frame with a graceful fallback.
  *
@@ -43,7 +46,10 @@ export function Portrait({
       <span
         aria-hidden
         className="absolute inset-0 bg-cover grayscale-[0.15] contrast-[1.05]"
-        style={{ backgroundImage: `url('${src}')`, backgroundPosition: position }}
+        style={{
+          backgroundImage: `url('${base}${src}')`,
+          backgroundPosition: position,
+        }}
       />
     </div>
   );
