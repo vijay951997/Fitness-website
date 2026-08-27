@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fit with Vijay — website
 
-## Getting Started
+Marketing site for **Certified Personal Trainer Vijay**, Chennai.
+Next.js 16 (App Router) + Tailwind CSS v4. Fully static — no server or
+database needed to host it.
 
-First, run the development server:
+---
+
+## Run it on your machine
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open <http://localhost:3000>. Edits appear instantly.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Changing the content
 
-## Learn More
+**Almost everything you'll want to change lives in one file:**
 
-To learn more about Next.js, take a look at the following resources:
+### [`src/config/site.ts`](src/config/site.ts)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| What you want to change      | Edit this                                    |
+| ---------------------------- | -------------------------------------------- |
+| WhatsApp number              | `whatsapp.number` (digits only, with `91`)   |
+| Prices and what's included   | `plans`                                      |
+| The three coaching services  | `services`                                   |
+| FAQ questions and answers    | `faqs`                                       |
+| Client reviews               | `testimonials`                               |
+| Google review count          | `site.rating.count`                          |
+| Instagram / YouTube links    | `social` (empty strings hide the links)      |
+| Your domain, once you buy it | `site.url`                                   |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Before you go live — a checklist
 
-## Deploy on Vercel
+- [ ] Add your photos — see [`public/images/README.md`](public/images/README.md)
+- [ ] **Replace the placeholder testimonials** in `site.ts` with real client
+      quotes. They currently say "Add a real client quote here."
+- [ ] Rewrite the About copy in [`src/components/About.tsx`](src/components/About.tsx)
+      in your own words — especially the certifications list, which is a
+      reasonable guess, not your actual qualifications.
+- [ ] Confirm the price bands in `plans` match what you actually charge.
+- [ ] Set `site.url` to your real domain, then redeploy.
+- [ ] Add your website URL to your Google Business profile.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Putting it online
+
+The site builds to plain static files, so hosting is free.
+
+### Easiest: Vercel
+
+```bash
+npx vercel
+```
+
+Follow the prompts. Push to GitHub afterwards and every push redeploys
+automatically.
+
+### Alternative: Netlify or Cloudflare Pages
+
+Connect the GitHub repo and use:
+
+- Build command: `npm run build`
+- Output directory: `.next`
+
+### Your own domain
+
+Buy one (`fitwithvijay.in` costs roughly ₹700/year at GoDaddy, Hostinger or
+Namecheap), add it in your host's dashboard, then update `site.url` in
+`src/config/site.ts` and redeploy so the SEO tags point to the right place.
+
+---
+
+## What's already handled for you
+
+- **Local SEO** — `LocalBusiness` structured data with your address, hours,
+  geo-coordinates and 5.0 rating, so Google can show a rich result.
+- **FAQ structured data** — your questions can appear directly in search.
+- **Social preview card** — auto-generated at `/opengraph-image`, so the link
+  looks good when shared on WhatsApp.
+- **Sitemap and robots.txt** — generated automatically.
+- **Mobile-first** — most of your visitors will be on a phone.
+- **Accessibility** — keyboard navigation, focus rings, reduced-motion
+  support, semantic headings.
+
+---
+
+## Project layout
+
+```
+src/
+  app/
+    layout.tsx            fonts, metadata, business structured data
+    page.tsx              assembles the sections in order
+    globals.css           colour palette and design tokens
+    icon.svg              favicon
+    opengraph-image.tsx   social share card
+  components/             one file per section of the page
+  config/site.ts          ← all your content lives here
+public/images/            your photos
+```

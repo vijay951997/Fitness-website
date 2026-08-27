@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────
+   Bold & athletic
+   Near-black canvas, one electric lime accent.
+   ───────────────────────────────────────────── */
+@theme {
+  --color-ink-950: #08080a;
+  --color-ink-900: #0b0b0c;
+  --color-ink-850: #121215;
+  --color-ink-800: #16171a;
+  --color-ink-700: #1e1f23;
+  --color-ink-600: #2a2c31;
+  --color-ink-500: #3a3d44;
+
+  --color-lime-400: #e8ff4d;
+  --color-lime-500: #d4ec2f;
+  --color-lime-600: #b4cc14;
+
+  --color-bone-50: #f5f5f3;
+  --color-bone-100: #e7e7e3;
+  /* The two muted greys are tuned to clear WCAG AA (4.5:1) against the
+     dark backgrounds at the small sizes the .label style uses. */
+  --color-bone-300: #a8a9a4;
+  --color-bone-400: #9b9c96;
+  --color-bone-500: #85867f;
+
+  --font-display: var(--font-anton), "Arial Narrow", Impact, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", monospace;
+
+  --animate-marquee: marquee 32s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+:root {
+  --background: var(--color-ink-900);
+  --foreground: var(--color-bone-50);
+  color-scheme: dark;
+}
+
+* {
+  border-color: color-mix(in oklab, var(--color-bone-50) 12%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background: var(--background);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-lime-400);
+  color: var(--color-ink-950);
+}
+
+/* ── Type helpers ─────────────────────────────────────────── */
+
+/* Anton is a single heavy weight; it needs negative tracking at
+   display sizes and a little positive tracking when set small. */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.88;
+  font-weight: 400;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ── Texture ──────────────────────────────────────────────── */
+
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Diagonal hazard stripes — used on thin divider bars. */
+.stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-lime-400) 0 2px,
+    transparent 2px 9px
+  );
+}
+
+/* ── Scroll reveal ────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
 }
