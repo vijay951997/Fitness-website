@@ -78,10 +78,8 @@ const jsonLd = {
   image: `${site.url}/images/vijay.jpg`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.addressLine,
     addressLocality: site.city,
     addressRegion: site.region,
-    postalCode: site.postalCode,
     addressCountry: "IN",
   },
   geo: {

@@ -18,7 +18,7 @@ export function Contact() {
     },
     {
       label: "Based in",
-      value: `${site.addressLine}, ${site.city} ${site.postalCode}`,
+      value: `${site.city}, ${site.region}`,
       href: site.googleMapsUrl,
       external: true,
     },
