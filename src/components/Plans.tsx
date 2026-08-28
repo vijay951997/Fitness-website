@@ -28,12 +28,12 @@ export function Plans() {
         </Reveal>
       </div>
 
-      <div className="mt-16 grid gap-px bg-bone-50/10 lg:grid-cols-3">
+      <div className="mt-10 grid gap-px bg-bone-50/10 sm:mt-16 lg:grid-cols-3">
         {plans.map((plan, i) => (
           <Reveal key={plan.id} delay={i * 70}>
             <article
               className={cx(
-                "relative flex h-full flex-col p-8 sm:p-9",
+                "relative flex h-full flex-col p-6 sm:p-9",
                 plan.featured ? "bg-lime-400 text-ink-950" : "bg-ink-900",
               )}
             >
@@ -61,10 +61,10 @@ export function Plans() {
                 {plan.blurb}
               </p>
 
-              <p className="mt-8 flex flex-wrap items-baseline gap-2">
+              <p className="mt-6 flex flex-wrap items-baseline gap-2 sm:mt-8">
                 <span
                   className={cx(
-                    "display text-[2.75rem] leading-none",
+                    "display text-[2.25rem] leading-none sm:text-[2.75rem]",
                     plan.featured ? "text-ink-950" : "text-bone-50",
                   )}
                 >
@@ -82,7 +82,7 @@ export function Plans() {
 
               <ul
                 className={cx(
-                  "mt-8 flex-1 space-y-3.5 border-t pt-7",
+                  "mt-6 flex-1 space-y-3.5 border-t pt-6 sm:mt-8 sm:pt-7",
                   plan.featured ? "border-ink-950/20" : "border-bone-50/12",
                 )}
               >
@@ -112,7 +112,7 @@ export function Plans() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant={plan.featured ? "dark" : "outline"}
-                className="mt-9 w-full"
+                className="mt-7 w-full sm:mt-9"
               >
                 {plan.featured ? <WhatsAppIcon /> : null}
                 Enquire

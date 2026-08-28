@@ -32,11 +32,11 @@ export function Contact() {
     >
       <StripeBar />
 
-      <div className="mx-auto grid w-full max-w-7xl gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-12 lg:gap-16">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-14 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-12 lg:gap-16 lg:py-28">
         <div className="lg:col-span-7">
           <Reveal>
             <Eyebrow>Get started</Eyebrow>
-            <Heading className="text-[clamp(2.5rem,7vw,5.5rem)]">
+            <Heading className="text-[clamp(2.1rem,7vw,5.5rem)]">
               Tell me what you&apos;re
               <br />
               working <span className="text-lime-400">towards</span>
@@ -44,7 +44,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={80}>
-            <p className="mt-8 max-w-lg text-lg leading-relaxed text-pretty text-bone-300">
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-pretty text-bone-300 sm:mt-8 sm:text-lg">
               Send a message and we&apos;ll set up a short call. We&apos;ll talk
               through your goal, your injuries and your schedule before you
               commit to anything.

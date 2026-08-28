@@ -12,7 +12,7 @@ const stats = [
 
 export function Hero() {
   return (
-    <section className="noise relative isolate flex min-h-svh flex-col justify-end overflow-hidden bg-ink-950 pt-28">
+    <section className="noise relative isolate flex min-h-svh flex-col justify-end overflow-hidden bg-ink-950 pt-24 sm:pt-28">
       {/* Full-bleed photo, anchored right on wide screens */}
       <div className="absolute inset-0 -z-10">
         <Portrait
@@ -33,7 +33,7 @@ export function Hero() {
 
       <div className="mx-auto w-full max-w-7xl px-5 pb-12 sm:px-8 sm:pb-14">
         <Reveal>
-          <p className="label mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-bone-300">
+          <p className="label mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-bone-300 sm:mb-7">
             <span className="flex items-center gap-2 bg-lime-400 px-2.5 py-1.5 text-ink-950">
               <Stars />
               {site.rating.value}
@@ -62,14 +62,14 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={140}>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-pretty text-bone-300 sm:text-xl">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-pretty text-bone-300 sm:mt-8 sm:text-lg lg:text-xl">
             Online coaching, prehab &amp; rehab, and nutrition built around the
             food you already eat. Coached one-to-one from Chennai.
           </p>
         </Reveal>
 
         <Reveal delay={210}>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
             <Button
               href={waLink()}
               target="_blank"
@@ -99,11 +99,11 @@ export function Hero() {
       <Reveal>
         <dl className="grid grid-cols-2 divide-x divide-y divide-bone-50/10 border-t border-bone-50/10 bg-ink-900/80 backdrop-blur-sm sm:grid-cols-4 sm:divide-y-0">
           {stats.map((s) => (
-            <div key={s.l} className="px-5 py-6 sm:px-8">
-              <dt className="display text-4xl text-bone-50 sm:text-5xl">
+            <div key={s.l} className="px-5 py-4 sm:px-8 sm:py-6">
+              <dt className="display text-3xl text-bone-50 sm:text-5xl">
                 {s.v}
               </dt>
-              <dd className="label mt-2 text-bone-400">{s.l}</dd>
+              <dd className="label mt-1.5 text-bone-400 sm:mt-2">{s.l}</dd>
             </div>
           ))}
         </dl>

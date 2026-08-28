@@ -31,7 +31,9 @@ export function Section({
     <section
       id={id}
       className={cx(
-        "relative isolate overflow-hidden px-5 py-20 sm:px-8 sm:py-28",
+        // Phones get noticeably tighter vertical rhythm — 80px of padding
+        // top and bottom reads as dead space on a small screen.
+        "relative isolate overflow-hidden px-5 py-14 sm:px-8 sm:py-24 lg:py-28",
         tones[tone],
         className,
       )}
@@ -86,9 +88,11 @@ export function Heading({
     <Tag
       className={cx(
         "display text-balance",
+        // Lower clamp minimums: at 390px the old floors meant a heading
+        // ran to three or four lines and swallowed the screen.
         Tag === "h1"
-          ? "text-[clamp(3rem,9vw,7.5rem)]"
-          : "text-[clamp(2.25rem,5.5vw,4.5rem)]",
+          ? "text-[clamp(2.5rem,9vw,7.5rem)]"
+          : "text-[clamp(1.85rem,5.5vw,4.5rem)]",
         className,
       )}
     >
@@ -107,7 +111,7 @@ export function Lede({
   return (
     <p
       className={cx(
-        "max-w-2xl text-lg leading-relaxed text-pretty text-bone-300 sm:text-xl",
+        "max-w-2xl text-base leading-relaxed text-pretty text-bone-300 sm:text-lg lg:text-xl",
         className,
       )}
     >
@@ -123,6 +127,11 @@ type ButtonProps = ComponentProps<typeof Link> & {
   size?: "md" | "lg";
 };
 
+/**
+ * NOTE: the base classes below set `inline-flex`, and Tailwind emits
+ * `.inline-flex` after `.hidden`, so passing `hidden` in `className`
+ * will NOT hide a Button. Wrap it in a hidden element instead.
+ */
 export function Button({
   variant = "lime",
   size = "md",

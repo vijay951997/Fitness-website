@@ -55,15 +55,15 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button
-            href={waLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex"
-          >
-            <WhatsAppIcon />
-            Enquire
-          </Button>
+          {/* Wrapper, not `hidden` on the Button itself: Button hardcodes
+              `inline-flex`, which Tailwind emits after `.hidden`, so the
+              utility loses and the button stays visible on phones. */}
+          <div className="hidden sm:block">
+            <Button href={waLink()} target="_blank" rel="noopener noreferrer">
+              <WhatsAppIcon />
+              Enquire
+            </Button>
+          </div>
 
           <button
             type="button"
