@@ -192,22 +192,17 @@ export type Testimonial = { quote: string; name: string; detail: string };
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Add a real client quote here. Copying one from your Google reviews is the easiest place to start.",
-    name: "Client name",
-    detail: "Goal · duration coached",
+      "I started my PT with Vijay in March. It’s been 3 months now and I could see my energy and flexibility has improved a lot, my body got toned and he tracks my daily plate, step count and gives feedback and suggests alternatives if needed. I have gained all these in the comfort of my home as an online training yet getting better results and everyone complimented for the visible changes they could see. Day by day, the intensity of workout is gradually increased by him which is pushing us towards our goal. The motivation and kind of attention he provides kept me going so far with good improvement. I have never been this continuous in improvising my fitness earlier but now with Vijay i came this far and i am confident that i will reach my fitness goal.",
+    name: "Maha Nathan",
+    detail: "Body recomp · 8 months",
   },
   {
     quote:
-      "A second real quote. Reviews that mention a specific result convert far better than general praise.",
-    name: "Client name",
-    detail: "Goal · duration coached",
+      "Mr. Vijay is an experienced trainer who understands your needs and recommends the right exercises tailored to them. His practical approach makes working with him easy, and he serves as an excellent guide for beginners also.",
+    name: "Harry Harsha",
+    detail: "Rehab+strength training · 6 monts",
   },
-  {
-    quote:
-      "A third real quote. Ask clients to mention what changed for them week to week.",
-    name: "Client name",
-    detail: "Goal · duration coached",
-  },
+  
 ];
 
 export const faqs = [
