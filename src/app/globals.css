@@ -81,6 +81,17 @@ body {
   font-weight: 400;
 }
 
+/* Anton's ascent + descent is roughly 1.5em, so a 0.88 line box makes
+   consecutive lines collide. That only bites once a heading wraps, which
+   happens on narrow screens — headings mostly sit on one or two lines on
+   desktop. Loosen below `sm` and leave the desktop look untouched. */
+@media (width < 40rem) {
+  .display {
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+  }
+}
+
 .label {
   font-family: var(--font-mono);
   font-size: 0.7rem;
