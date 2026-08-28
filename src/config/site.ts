@@ -18,8 +18,6 @@ export const site = {
   city: "Chennai",
   region: "Tamil Nadu",
   country: "India",
-  addressLine: "250, Airport Colony, Heritage Jayendra Nagar, Sembakkam",
-  postalCode: "600064",
   geo: { lat: 12.935649, lng: 80.165311 },
   hours: "Open 24 hours",
   rating: { value: "5.0", count: 12 }, // ← update count as reviews come in
@@ -51,49 +49,124 @@ export const nav = [
 ] as const;
 
 export const services = [
-  {
-    id: "online-coaching",
-    eyebrow: "01",
-    title: "Online Coaching",
-    summary:
-      "A programme built around your body, your schedule and the equipment you actually have — reviewed and adjusted every week.",
-    points: [
-      "Custom training plan updated week to week",
-      "Video form checks on your main lifts",
-      "Weekly check-in call and progress review",
-      "Direct WhatsApp access between sessions",
-    ],
-    forWhom: "Best for working professionals training in a gym or at home.",
-  },
-  {
-    id: "prehab-rehab",
-    eyebrow: "02",
-    title: "Prehab & Rehab",
-    summary:
-      "Corrective work for the aches that stop you training. We restore the movement first, then load it — so the problem stops coming back.",
-    points: [
-      "Movement and posture assessment",
-      "Targeted corrective work for the weak link",
-      "Safe return-to-lifting progression",
-      "Desk-posture and daily-habit coaching",
-    ],
-    forWhom:
-      "Best for back, shoulder, knee and neck niggles, and anyone returning after an injury.",
-  },
-  {
-    id: "nutrition",
-    eyebrow: "03",
-    title: "Diet & Nutrition",
-    summary:
-      "A plan built from the food you already eat — South Indian meals, home cooking, eating out — not a list of things you'll quit in two weeks.",
-    points: [
-      "Calorie and macro targets set to your goal",
-      "Meal structure around real Indian food",
-      "Practical guidance for travel and eating out",
-      "Adjusted as your weight and energy respond",
-    ],
-    forWhom: "Best for fat loss, body recomposition and sustainable habits.",
-  },
+  
+{
+id: "online-coaching",
+
+eyebrow: "01",
+
+title: "Personal Online Coaching",
+
+summary:
+  "Personalised one-on-one coaching built around your goals, lifestyle, schedule and the equipment you actually have access to. Every programme is structured to help you train with purpose, progress safely and stay consistent.",
+
+points: [
+  "Personalised training programme based on your goals",
+  "Choose 2, 3 or 5 one-on-one coaching sessions per week",
+  "Live exercise guidance and technique correction",
+  "Training adapted to your gym, home or available equipment",
+  "Regular progress tracking and performance reviews",
+  "Programme adjustments as your strength and fitness improve",
+  "WhatsApp support for questions and guidance between sessions",
+  "Clear structure, accountability and long-term progression",
+],
+
+forWhom:
+  "Best for beginners, busy professionals and anyone who wants structured, personalised coaching with regular accountability.",
+
+
+},
+
+
+
+{
+id: "post-rehab-strength",
+
+eyebrow: "02",
+
+title: "Post-Rehab Strength Coaching",
+
+summary:
+  "Completed your initial physiotherapy but not yet confident about returning to regular training? This structured Phase 2 approach helps you gradually rebuild strength, stability, movement capacity and confidence before progressing back into normal exercise.",
+
+points: [
+  "Structured Phase 2 strength progression after initial physiotherapy",
+  "Training designed around your current capacity and limitations",
+  "Movement, mobility and stability-focused exercises",
+  "Progressive strengthening of previously affected areas",
+  "Exercise technique and movement quality guidance",
+  "Gradual and structured return to gym or regular training",
+  "Progressive load management based on your response to training",
+  "Regular assessment and programme adjustments",
+  "Coordination with your physiotherapy recommendations where appropriate",
+],
+
+forWhom:
+  "Best for people who have completed their initial physiotherapy, have appropriate clearance to exercise and want structured guidance to rebuild strength and confidently return to training.",
+
+disclaimer:
+  "**Important:** Post-rehab strength coaching is not a replacement for medical care or physiotherapy. Coaching begins after the initial rehabilitation phase and appropriate clearance from your healthcare professional. If your condition requires further clinical assessment or treatment, you will be advised to consult your physiotherapist or doctor.",
+
+
+},
+
+
+
+{
+id: "nutrition-guidance",
+
+eyebrow: "03",
+
+title: "Nutrition Guidance",
+
+summary:
+  "Practical nutrition guidance built around the food and lifestyle you already have. No extreme diets and no unnecessary restrictions — just a structured approach that supports your training, health and fitness goals.",
+
+points: [
+  "Nutrition guidance based on your individual fitness goal",
+  "Practical meal structure using familiar Indian foods",
+  "Rice, dosa, idli and home-cooked meals can all fit",
+  "Portion awareness and calorie guidance",
+  "Protein and macronutrient recommendations",
+  "Strategies for eating out, travel and social occasions",
+  "Guidance adjusted based on your progress and consistency",
+  "Focus on sustainable habits rather than short-term dieting",
+],
+
+forWhom:
+  "Best for fat loss, muscle building, body recomposition and anyone looking to build a healthier and more sustainable relationship with food.",
+
+
+},
+
+
+
+{
+id: "fitness-consultation",
+
+eyebrow: "04",
+
+title: "Fitness Consultation",
+
+summary:
+  "Not sure where to start? Begin with a one-on-one consultation to understand your goals, assess your current routine and get clear guidance on the right next steps for your fitness journey.",
+
+points: [
+  "One-on-one consultation and goal discussion",
+  "Review of your current fitness routine and lifestyle",
+  "Discussion about your training history and experience",
+  "Guidance based on your available time and equipment",
+  "Discussion of previous injuries or training limitations",
+  "Practical recommendations for your next steps",
+  "Answers to your fitness and training questions",
+  "Guidance on choosing the right coaching plan",
+],
+
+forWhom:
+  "Best for anyone who wants professional guidance, clarity and a structured starting point before committing to regular coaching.",
+
+
+},
 ] as const;
 
 /** Goals — taken from your existing enquiry form. */
@@ -110,25 +183,35 @@ export const goals = [
 
 export const process = [
   {
-    step: "01",
-    title: "Enquiry",
-    body: "You send a message on WhatsApp or fill the detailed intake form. It takes about three minutes.",
-  },
-  {
-    step: "02",
-    title: "Assessment call",
-    body: "We talk through your goal, training history, injuries, medical conditions and how much time you realistically have.",
-  },
-  {
-    step: "03",
-    title: "Your plan",
-    body: "You receive a training programme and nutrition plan built specifically for you — not a template with your name on it.",
-  },
-  {
-    step: "04",
-    title: "Weekly coaching",
-    body: "We review the week, check your form, adjust the load and keep going. The plan changes as you do.",
-  },
+step: "01",
+title: "Enquiry",
+body: "Send me a message on WhatsApp or fill out the enquiry form. Tell me a little about your goal, and we'll take it from there.",
+},
+{
+step: "02",
+title: "Consultation",
+body: "We'll talk through your goals, training history, current fitness level, injuries or limitations, available equipment and how much time you can realistically commit.",
+},
+{
+step: "03",
+title: "Choose your coaching",
+body: "Based on your goals and the level of support you need, we'll choose the right plan — from basic guidance to two, three or five one-on-one coaching sessions per week.",
+},
+{
+step: "04",
+title: "Your personalised plan",
+body: "You receive a training programme built around you — your goal, schedule, fitness level and available equipment. Where included in your coaching plan, nutrition guidance is tailored to your lifestyle too.",
+},
+{
+step: "05",
+title: "Start training",
+body: "Your coaching begins with structured sessions, form guidance and a clear plan to follow. No generic templates — everything is adjusted to your progress.",
+},
+{
+step: "06",
+title: "Track. Adjust. Progress.",
+body: "We track your progress, review your performance, correct your technique and adjust the programme when needed. As you improve, your training evolves with you.",
+},
 ] as const;
 
 /**
@@ -136,50 +219,75 @@ export const process = [
  * Adjust the numbers and inclusions freely.
  */
 export const plans = [
-  {
-    id: "foundation",
-    name: "Foundation",
-    price: "₹4,000 – 5,000",
-    cadence: "per month",
-    blurb: "Structured training, self-managed.",
-    features: [
-      "Custom monthly training plan",
-      "Exercise video library",
-      "Monthly plan update",
-      "WhatsApp support",
-    ],
-    featured: false,
-  },
-  {
-    id: "coaching",
-    name: "Coaching",
-    price: "₹5,000 – 9,000",
-    cadence: "per month",
-    blurb: "Training plus nutrition, coached weekly.",
-    features: [
-      "Everything in Foundation",
-      "Personalised nutrition plan",
-      "Weekly check-in call",
-      "Video form checks",
-      "Prehab work built in",
-    ],
-    featured: true,
-  },
-  {
-    id: "transformation",
-    name: "Transformation",
-    price: "₹10,000+",
-    cadence: "per month",
-    blurb: "Close, high-touch coaching for a defined outcome.",
-    features: [
-      "Everything in Coaching",
-      "Full movement & posture assessment",
-      "Dedicated rehab programming",
-      "Twice-weekly check-ins",
-      "Priority WhatsApp access",
-    ],
-    featured: false,
-  },
+ {
+  id: "starter",
+  name: "Starter",
+  price: "₹1,000",
+  cadence: "per month",
+  blurb: "Get expert guidance and start your fitness journey with confidence.",
+  features: [
+    "Initial fitness consultation",
+    "Goal and requirement discussion",
+    "Basic workout guidance",
+    "Training recommendations",
+    "WhatsApp message support",
+    "Ideal for beginners who need direction",
+  ],
+  featured: false,
+},
+{
+  id: "foundation",
+  name: "Foundation",
+  price: "₹5,000",
+  cadence: "per month",
+  blurb: "Personalised guidance with two one-on-one coaching sessions every week.",
+  features: [
+    "Everything in Starter",
+    "Customised training plan",
+    "2 one-on-one sessions per week",
+    "Weekly progress tracking",
+    "Exercise form correction",
+    "Personalised workout adjustments",
+    "WhatsApp support",
+  ],
+  featured: false,
+},
+{
+  id: "coaching",
+  name: "Coaching",
+  price: "₹8,000",
+  cadence: "per month",
+  blurb: "Consistent one-on-one coaching with three personalised sessions every week.",
+  features: [
+    "Everything in Foundation",
+    "3 one-on-one sessions per week",
+    "Personalised progression plan",
+    "Detailed form and technique correction",
+    "Weekly performance review",
+    "Nutrition and lifestyle guidance",
+    "Priority WhatsApp support",
+  ],
+  featured: true,
+},
+{
+  id: "transformation",
+  name: "Transformation",
+  price: "₹10,000",
+  cadence: "per month",
+  blurb: "High-frequency personal coaching for maximum accountability and results.",
+  features: [
+    "Everything in Coaching",
+    "5 one-on-one sessions per week",
+    "Fully personalised workout programming",
+    "Detailed goal and progress tracking",
+    "Regular body and performance assessments",
+    "Training plan adjustments based on progress",
+    "Nutrition and lifestyle guidance",
+    "Priority WhatsApp support",
+    "Maximum accountability and personal attention",
+  ],
+  featured: false,
+},
 ] as const;
 
 /**
@@ -206,33 +314,94 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const faqs = [
-  {
-    q: "Do I need a gym membership?",
-    a: "No. Plans are built around whatever you have access to — a full gym, a small apartment gym, or a pair of dumbbells at home. Tell me what you have and the programme is written for it.",
-  },
-  {
-    q: "I have an old injury. Can I still train?",
-    a: "In most cases, yes — and training is often part of the fix. We start with an assessment, work around the injury, and rebuild strength in that area gradually. If something needs a doctor or physiotherapist first, I'll tell you honestly.",
-  },
-  {
-    q: "How is online coaching different from a gym trainer?",
-    a: "You get a plan built for your body and reviewed every single week, rather than whatever the floor trainer has time for. Form is checked over video, and you can message between sessions. It also costs considerably less than daily in-person sessions.",
-  },
-  {
-    q: "Will I have to give up rice and Indian food?",
-    a: "No. The nutrition plan is built around what you already eat. Rice, dosa, home-cooked meals and the occasional dinner out all fit — the structure and quantities change, not your entire culture of eating.",
-  },
-  {
-    q: "How soon will I see results?",
-    a: "Most clients feel stronger and move better within three to four weeks. Visible physical change typically shows from around eight to twelve weeks, depending on your starting point and how consistent you are.",
-  },
-  {
-    q: "How do I get started?",
-    a: "Message me on WhatsApp, or fill the enquiry form. We'll set up a short call to talk through your goal before you commit to anything.",
-  },
+ {
+  q: "Which plan should I choose?",
+
+  a: "It depends on how much support and accountability you need. If you're just getting started, the Starter consultation is a good first step. For regular one-on-one coaching, you can choose between two, three, or five sessions per week. We can discuss your goals and recommend the right option.",
+},
+{
+  q: "Are the coaching sessions online or in person?",
+
+  a: "Sessions can be conducted online through video calls. You'll receive personalised guidance, exercise demonstrations, form correction and regular progress tracking from wherever you are.",
+},
+{
+  q: "What happens during a one-on-one coaching session?",
+
+  a: "Each session is focused on your individual programme. We'll work through your exercises, correct your form, adjust the intensity when needed and make sure you're progressing safely towards your goal.",
+},
+{
+  q: "What if I miss a scheduled session?",
+
+  a: "Life happens. If you let me know in advance, we'll try to reschedule the session based on availability. Regular communication helps us make sure you get the most out of your coaching plan.",
+},
+{
+  q: "Do I get a personalised workout plan?",
+
+  a: "Yes. Your training is built around your goal, current fitness level, available equipment, schedule and any limitations you may have. The plan can be adjusted as you progress.",
+},
+{
+  q: "Do you provide nutrition guidance?",
+
+  a: "Yes. Nutrition guidance is designed around your goal and your regular eating habits. The focus is on building sustainable habits rather than giving you an unrealistic crash diet.",
+},
+{
+  q: "Do I need to be fit before joining?",
+
+  a: "Not at all. You can start at your current fitness level. The programme is designed to progress gradually, whether you're a complete beginner, returning after a break or already training regularly.",
+},
+{
+  q: "How long are the coaching sessions?",
+
+  a: "Session duration depends on your training requirement and the type of coaching you choose. The focus is on quality training and making sure you get the guidance needed for that session.",
+},
+{
+  q: "Can the programme be adjusted if my schedule changes?",
+
+  a: "Yes. Your programme should fit into your life, not take over it. If your work schedule, travel or routine changes, we can adjust your training structure where possible.",
+},
+{
+  q: "Will you track my progress?",
+
+  a: "Yes. Progress is tracked through factors such as strength, performance, consistency, body measurements and other goal-specific markers. The goal is to focus on meaningful progress, not just the number on the weighing scale.",
+},
+{
+  q: "Can I contact you between sessions?",
+
+  a: "Yes. Depending on your coaching plan, you can use WhatsApp for questions, updates and support between your scheduled sessions.",
+},
+{
+  q: "Is this only for weight loss?",
+
+  a: "No. Coaching can be tailored for fat loss, muscle building, strength, improved fitness, better movement, returning to exercise or simply building a healthier and more consistent lifestyle.",
+},
+{
+  q: "Do you guarantee results?",
+
+  a: "No coach can honestly guarantee a specific result or timeline. Your progress depends on factors such as consistency, nutrition, sleep, effort and your starting point. What I can guarantee is personalised guidance, honest feedback and a programme designed around your goals.",
+},
+{
+  q: "Can I upgrade my coaching plan later?",
+
+  a: "Yes. If you feel you need more sessions, accountability or support, you can discuss upgrading your plan based on availability.",
+},
+{
+  q: "What should I do before our first session?",
+
+  a: "Come ready to discuss your goals, current routine, training experience, available equipment and any injuries or limitations that may affect your training. This helps me create a programme that actually fits you.",
+},
+{
+  q: "How do I make payment?",
+
+  a: "Payment details will be shared when you choose your coaching plan. Your slot and coaching schedule can be confirmed once the payment process is completed.",
+},
+{
+  q: "Which app will we use for coaching?",
+
+  a: "Online sessions and consultations are conducted through a convenient video calling platform, with WhatsApp used for communication, updates and ongoing support. You'll receive all joining details before your first session.",
+},
 ] as const;
 
 export const social = {
-  instagram: "", // e.g. "https://instagram.com/yourhandle"
-  youtube: "",
+  instagram:"https://instagram.com/fitwithvijayawsom"
+
 } as const;

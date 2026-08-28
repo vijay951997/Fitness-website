@@ -42,6 +42,21 @@ export function Services() {
                   {service.summary}
                 </p>
                 <p className="label mt-4 text-bone-500 sm:mt-5">{service.forWhom}</p>
+                {"disclaimer" in service && service.disclaimer && (
+                  <p className="mt-4 border-l-2 border-bone-50/20 pl-3 text-xs leading-relaxed text-bone-400 sm:mt-5">
+                    {service.disclaimer
+                      .split(/\*\*(.+?)\*\*/)
+                      .map((part, idx) =>
+                        idx % 2 === 1 ? (
+                          <strong key={idx} className="text-bone-200">
+                            {part}
+                          </strong>
+                        ) : (
+                          part
+                        ),
+                      )}
+                  </p>
+                )}
               </div>
 
               {/* Inclusions */}
