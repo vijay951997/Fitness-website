@@ -17,7 +17,7 @@ const credentials = [
 export function About() {
   return (
     <Section id="about" tone="ink" className="noise">
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+      <div className="grid gap-9 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-7">
           <Reveal>
             <Eyebrow>The coach</Eyebrow>
@@ -28,7 +28,7 @@ export function About() {
           </Reveal>
 
           <Reveal delay={90}>
-            <div className="mt-9 max-w-2xl space-y-5 text-lg leading-relaxed text-pretty text-bone-300">
+            <div className="mt-7 max-w-2xl space-y-5 text-base leading-relaxed text-pretty text-bone-300 sm:mt-9 sm:text-lg">
               <p>
                 I&apos;m Vijay, a certified personal trainer based in Sembakkam,
                 Chennai. Most people who come to me have tried a gym before.
@@ -55,7 +55,7 @@ export function About() {
           </Reveal>
 
           <Reveal delay={160}>
-            <ul className="mt-11 grid gap-px border border-bone-50/10 bg-bone-50/10 sm:grid-cols-2">
+            <ul className="mt-9 grid gap-px border border-bone-50/10 bg-bone-50/10 sm:mt-11 sm:grid-cols-2">
               {credentials.map((item, i) => (
                 <li
                   key={item}
@@ -72,15 +72,15 @@ export function About() {
         </div>
 
         <Reveal delay={120} className="lg:col-span-5">
-          <div className="relative h-full min-h-[26rem]">
+          <div className="relative h-full min-h-[17rem] sm:min-h-[26rem]">
             <Portrait
               src="/images/vijay-coaching.jpg"
               alt="Vijay coaching a client"
               className="h-full w-full"
               position="center 30%"
             />
-            <div className="absolute bottom-0 left-0 bg-lime-400 px-6 py-5">
-              <p className="display text-4xl text-ink-950">
+            <div className="absolute bottom-0 left-0 bg-lime-400 px-5 py-4 sm:px-6 sm:py-5">
+              <p className="display text-3xl text-ink-950 sm:text-4xl">
                 {site.hours.replace("Open ", "")}
               </p>
               <p className="label mt-1 text-ink-950/65">Coach availability</p>

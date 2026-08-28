@@ -22,26 +22,26 @@ export function Services() {
         </Reveal>
       </div>
 
-      <div className="mt-16 border-t border-bone-50/12">
+      <div className="mt-10 border-t border-bone-50/12 sm:mt-16">
         {services.map((service, i) => (
           <Reveal key={service.id} delay={i * 70}>
-            <article className="group relative grid gap-6 border-b border-bone-50/12 py-10 transition-colors duration-300 hover:bg-ink-800/60 md:grid-cols-12 md:gap-8 md:py-12">
+            <article className="group relative grid gap-4 border-b border-bone-50/12 py-8 transition-colors duration-300 hover:bg-ink-800/60 sm:gap-6 md:grid-cols-12 md:gap-8 md:py-12">
               {/* Index */}
               <div className="md:col-span-2">
-                <span className="display text-5xl text-bone-50/15 transition-colors duration-300 group-hover:text-lime-400 md:text-6xl">
+                <span className="display text-4xl text-bone-50/15 transition-colors duration-300 group-hover:text-lime-400 sm:text-5xl md:text-6xl">
                   {service.eyebrow}
                 </span>
               </div>
 
               {/* Title + summary */}
               <div className="md:col-span-5">
-                <h3 className="display text-3xl text-bone-50 sm:text-4xl">
+                <h3 className="display text-2xl text-bone-50 sm:text-3xl md:text-4xl">
                   {service.title}
                 </h3>
-                <p className="mt-4 leading-relaxed text-pretty text-bone-300">
+                <p className="mt-3 text-[0.95rem] leading-relaxed text-pretty text-bone-300 sm:mt-4 sm:text-base">
                   {service.summary}
                 </p>
-                <p className="label mt-5 text-bone-500">{service.forWhom}</p>
+                <p className="label mt-4 text-bone-500 sm:mt-5">{service.forWhom}</p>
               </div>
 
               {/* Inclusions */}

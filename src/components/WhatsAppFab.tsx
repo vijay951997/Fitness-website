@@ -25,13 +25,16 @@ export function WhatsAppFab() {
       rel="noopener noreferrer"
       aria-label="Message Vijay on WhatsApp"
       className={cx(
-        "label group fixed right-5 bottom-5 z-50 flex items-center gap-3 bg-lime-400 px-4 py-4 text-ink-950 shadow-xl shadow-black/40 transition-all duration-300 hover:bg-lime-500 sm:right-8 sm:bottom-8 sm:pr-5",
+        // A square lime block reads as a stray tile over body copy on a
+        // phone, so it is a compact circle there and the labelled pill
+        // only appears once there is room for it.
+        "label group fixed right-4 bottom-4 z-50 flex size-14 items-center justify-center gap-3 rounded-full bg-lime-400 text-ink-950 shadow-xl shadow-black/40 transition-all duration-300 hover:bg-lime-500 sm:right-8 sm:bottom-8 sm:size-auto sm:rounded-none sm:px-5 sm:py-4",
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-6 opacity-0",
       )}
     >
-      <WhatsAppIcon className="size-5" />
+      <WhatsAppIcon className="size-6 sm:size-5" />
       <span className="hidden sm:inline">Chat with Vijay</span>
     </a>
   );

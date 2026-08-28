@@ -21,14 +21,14 @@ export function Process() {
         </Reveal>
       </div>
 
-      <ol className="mt-16 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-10 grid gap-x-8 gap-y-8 sm:mt-16 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
         {process.map((step, i) => (
           <Reveal key={step.step} delay={i * 70} as="li">
             <div className="border-t-2 border-ink-950 pt-5">
-              <span className="display text-6xl text-ink-950/25">
+              <span className="display text-5xl text-ink-950/25 sm:text-6xl">
                 {step.step}
               </span>
-              <h3 className="display mt-4 text-2xl text-ink-950">
+              <h3 className="display mt-3 text-xl text-ink-950 sm:mt-4 sm:text-2xl">
                 {step.title}
               </h3>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-pretty text-ink-950/70">
