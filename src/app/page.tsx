@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { CalorieCalculator } from "@/components/CalorieCalculator";
 import { Contact } from "@/components/Contact";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
@@ -36,6 +37,7 @@ export default function Home() {
       <main>
         <Hero />
         <GoalsMarquee />
+        <CalorieCalculator />
         <About />
         <Services />
         <Process />

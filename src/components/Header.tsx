@@ -94,7 +94,7 @@ export function Header() {
       <div
         className={cx(
           "overflow-hidden bg-ink-950 transition-[max-height,opacity] duration-300 md:hidden",
-          open ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0",
+          open ? "max-h-[34rem] opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <nav className="flex flex-col px-5 pb-6">
