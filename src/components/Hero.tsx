@@ -1,7 +1,7 @@
-import { enquiryFormUrl, site } from "@/config/site";
+import { site, telLink } from "@/config/site";
 import { Portrait } from "./Portrait";
 import { Reveal } from "./Reveal";
-import { ArrowIcon, Button, Stars, StripeBar } from "./ui";
+import { Button, PhoneIcon, Stars, StripeBar } from "./ui";
 import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 const stats = [
@@ -74,15 +74,9 @@ export function Hero() {
             <EnquiryButton size="lg" context={{ source: "hero" }}>
               Start your enquiry
             </EnquiryButton>
-            <Button
-              href={enquiryFormUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              size="lg"
-            >
-              Get a plan quote
-              <ArrowIcon />
+            <Button href={telLink()} variant="outline" size="lg">
+              <PhoneIcon />
+              Call Vijay
             </Button>
           </div>
         </Reveal>

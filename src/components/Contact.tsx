@@ -1,6 +1,6 @@
-import { enquiryFormUrl, site, waLink, whatsapp } from "@/config/site";
+import { site, telLink, waLink, whatsapp } from "@/config/site";
 import { Reveal } from "./Reveal";
-import { ArrowIcon, Button, Eyebrow, Heading, StripeBar } from "./ui";
+import { ArrowIcon, Button, Eyebrow, Heading, PhoneIcon, StripeBar } from "./ui";
 import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 export function Contact() {
@@ -62,15 +62,9 @@ export function Contact() {
               <EnquiryButton size="lg" context={{ source: "contact" }}>
                 Start your enquiry
               </EnquiryButton>
-              <Button
-                href={enquiryFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-              >
-                Fill the enquiry form
-                <ArrowIcon />
+              <Button href={telLink()} variant="outline" size="lg">
+                <PhoneIcon />
+                Call {whatsapp.display}
               </Button>
             </div>
           </Reveal>
