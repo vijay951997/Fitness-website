@@ -47,6 +47,7 @@ export const nav = [
   { label: "Plans", href: "#plans" },
   { label: "FAQ", href: "#faq" },
   { label: "Calculator", href: "#calculator" },
+  { label: "Tools", href: "#dashboard" },
 ] as const;
 
 export const services = [
