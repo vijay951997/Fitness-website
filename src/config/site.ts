@@ -19,7 +19,27 @@ export const site = {
   region: "Tamil Nadu",
   country: "India",
   geo: { lat: 12.935649, lng: 80.165311 },
-  hours: "Open 24 hours",
+  /**
+   * Availability. `short` is the big figure in the About section; `detail`
+   * is the full line shown on the contact panel and in the structured data.
+   * ⚠️ These are a plausible placeholder — set them to your real hours, and
+   * make sure they match your Google Business Profile.
+   */
+  availability: {
+    short: "6 days",
+    detail: "Mon–Sat, 5 AM – 9 PM",
+    /** Machine-readable, for the opening-hours structured data. */
+    opens: "05:00",
+    closes: "21:00",
+    days: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+  },
   rating: { value: "5.0", count: 12 }, // ← update count as reviews come in
   googleMapsUrl: "https://maps.app.goo.gl/GWVgmtLmCtpgyiLs5",
   email: "vijayakumar.d9597@gmail.com",

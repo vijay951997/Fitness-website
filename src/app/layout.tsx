@@ -90,17 +90,9 @@ const jsonLd = {
   hasMap: site.googleMapsUrl,
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ],
-    opens: "00:00",
-    closes: "23:59",
+    dayOfWeek: site.availability.days,
+    opens: site.availability.opens,
+    closes: site.availability.closes,
   },
   aggregateRating: {
     "@type": "AggregateRating",

@@ -22,7 +22,12 @@ export function Contact() {
       href: site.googleMapsUrl,
       external: true,
     },
-    { label: "Hours", value: site.hours, href: null, external: false },
+    {
+      label: "Hours",
+      value: site.availability.detail,
+      href: null,
+      external: false,
+    },
   ];
 
   return (
