@@ -41,12 +41,12 @@ export function waLink(message: string = whatsapp.defaultMessage) {
 export const enquiryFormUrl = "https://whatsform.com/1donJn";
 
 export const nav = [
-  { label: "Calculator", href: "#calculator" },
   { label: "About", href: "#about" },
   { label: "Coaching", href: "#services" },
   { label: "How it works", href: "#process" },
   { label: "Plans", href: "#plans" },
   { label: "FAQ", href: "#faq" },
+  { label: "Calculator", href: "#calculator" },
 ] as const;
 
 export const services = [

@@ -37,13 +37,13 @@ export default function Home() {
       <main>
         <Hero />
         <GoalsMarquee />
-        <CalorieCalculator />
         <About />
         <Services />
         <Process />
         <Testimonials />
         <Plans />
         <Faq />
+        <CalorieCalculator />
         <Contact />
       </main>
 
