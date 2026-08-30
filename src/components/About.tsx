@@ -74,16 +74,16 @@ export function About() {
         <Reveal delay={120} className="lg:col-span-5">
           <div className="relative h-full min-h-[17rem] sm:min-h-[26rem]">
             <Portrait
-              src="/images/vijay-coaching.jpg"
-              alt="Vijay coaching a client"
+              src="/images/vijay.jpg"
+              alt="Vijay, certified personal trainer, training in the gym"
               className="h-full w-full"
-              position="center 30%"
+              position="50% 18%"
             />
             <div className="absolute bottom-0 left-0 bg-lime-400 px-5 py-4 sm:px-6 sm:py-5">
               <p className="display text-3xl text-ink-950 sm:text-4xl">
-                {site.hours.replace("Open ", "")}
+                {site.availability.short}
               </p>
-              <p className="label mt-1 text-ink-950/65">Coach availability</p>
+              <p className="label mt-1 text-ink-950/65">Coaching every week</p>
             </div>
           </div>
         </Reveal>

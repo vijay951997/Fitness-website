@@ -17,7 +17,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10">
         <Portrait
           className="size-full"
-          position="60% 25%"
+          position="50% 32%"
           alt="Vijay, certified personal trainer in Chennai"
         />
         {/* Scrims: dark from the left so the headline always has contrast */}

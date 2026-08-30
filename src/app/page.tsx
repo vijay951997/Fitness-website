@@ -1,6 +1,6 @@
 import { About } from "@/components/About";
-import { CalorieCalculator } from "@/components/CalorieCalculator";
 import { Contact } from "@/components/Contact";
+import { Dashboard } from "@/components/tools/Dashboard";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { GoalsMarquee } from "@/components/GoalsMarquee";
@@ -37,13 +37,13 @@ export default function Home() {
       <main>
         <Hero />
         <GoalsMarquee />
-        <CalorieCalculator />
         <About />
         <Services />
         <Process />
         <Testimonials />
         <Plans />
         <Faq />
+        <Dashboard />
         <Contact />
       </main>
 
