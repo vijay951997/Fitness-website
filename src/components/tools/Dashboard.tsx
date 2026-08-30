@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Reveal } from "../Reveal";
 import { Eyebrow, Heading, Lede, Section, cx } from "../ui";
 import { ProfileBar } from "./ProfileBar";
+import { CaloriePanel } from "./panels/CaloriePanel";
 import { BmrPanel } from "./panels/BmrPanel";
 import { TdeePanel } from "./panels/TdeePanel";
 import { BmiPanel } from "./panels/BmiPanel";
@@ -26,6 +27,20 @@ type Tool = {
 
 const TOOLS: Tool[] = [
   {
+    id: "calories",
+    label: "Calories",
+    title: "Daily calorie target",
+    blurb: "How much to eat for your goal, from BMR and activity.",
+    Panel: CaloriePanel,
+  },
+  {
+    id: "macros",
+    label: "Macros",
+    title: "Protein, carbs and fat",
+    blurb: "How to split those calories across the three macronutrients.",
+    Panel: MacroPanel,
+  },
+  {
     id: "bmr",
     label: "BMR",
     title: "Basal metabolic rate",
@@ -38,34 +53,6 @@ const TOOLS: Tool[] = [
     title: "Total daily energy expenditure",
     blurb: "Your maintenance calories, once activity is counted.",
     Panel: TdeePanel,
-  },
-  {
-    id: "macros",
-    label: "Macros",
-    title: "Calories and macros",
-    blurb: "A protein, carbohydrate and fat split for your goal.",
-    Panel: MacroPanel,
-  },
-  {
-    id: "bmi",
-    label: "BMI",
-    title: "Body mass index",
-    blurb: "A screening figure, with its limitations stated.",
-    Panel: BmiPanel,
-  },
-  {
-    id: "water",
-    label: "Water",
-    title: "Daily water target",
-    blurb: "Scaled to your weight, activity and training time.",
-    Panel: WaterPanel,
-  },
-  {
-    id: "ideal-weight",
-    label: "Weight range",
-    title: "Healthy weight range",
-    blurb: "The band that matches a healthy BMI at your height.",
-    Panel: IdealWeightPanel,
   },
   {
     id: "deficit",
@@ -82,11 +69,32 @@ const TOOLS: Tool[] = [
     Panel: TimelinePanel,
   },
   {
+    id: "bmi",
+    label: "BMI",
+    title: "Body mass index",
+    blurb: "A screening figure, with its limitations stated.",
+    Panel: BmiPanel,
+  },
+  {
     id: "body-fat",
     label: "Body fat",
     title: "Body fat percentage",
     blurb: "Estimated from tape measurements, U.S. Navy method.",
     Panel: BodyFatPanel,
+  },
+  {
+    id: "ideal-weight",
+    label: "Weight range",
+    title: "Healthy weight range",
+    blurb: "The band that matches a healthy BMI at your height.",
+    Panel: IdealWeightPanel,
+  },
+  {
+    id: "water",
+    label: "Water",
+    title: "Daily water target",
+    blurb: "Scaled to your weight, activity and training time.",
+    Panel: WaterPanel,
   },
   {
     id: "workout",
@@ -121,13 +129,14 @@ export function Dashboard() {
       <div className="max-w-3xl">
         <Reveal>
           <Eyebrow>Free tools</Eyebrow>
-          <Heading>Your numbers, worked out</Heading>
+          <Heading>Stop guessing your numbers</Heading>
         </Reveal>
         <Reveal delay={80}>
           <Lede className="mt-7">
-            Enter your details once and every calculator updates. Nothing is
-            sent anywhere — the maths runs in your browser and your details
-            stay on this device.
+            Twelve calculators built on one profile. Enter your age, height
+            and weight once and everything updates together — calories,
+            macros, body fat, water, timelines. No sign-up, no email, and
+            nothing ever leaves your browser.
           </Lede>
         </Reveal>
       </div>
@@ -140,7 +149,7 @@ export function Dashboard() {
 
       <Reveal delay={160}>
         <div className="mt-10">
-          {/* Horizontally scrollable so eleven tabs never wrap into an
+          {/* Horizontally scrollable so twelve tabs never wrap into an
               unusable stack — this matters on desktop too, not just phones. */}
           <div
             role="tablist"
