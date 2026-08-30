@@ -96,6 +96,86 @@ export function NumberInput({
   );
 }
 
+/* ── Text inputs ──────────────────────────────────────────── */
+
+const textFieldClass =
+  "mt-3 w-full border bg-ink-950 px-4 py-3.5 text-base text-bone-50 transition-colors placeholder:text-bone-500 focus:outline-none";
+
+export function TextInput({
+  value,
+  onChange,
+  placeholder,
+  invalid,
+  id,
+  type = "text",
+  autoComplete,
+  inputMode,
+  maxLength,
+}: {
+  value: string;
+  onChange: (next: string) => void;
+  placeholder?: string;
+  invalid?: boolean;
+  id?: string;
+  type?: "text" | "email" | "tel";
+  autoComplete?: string;
+  inputMode?: "text" | "email" | "tel";
+  maxLength?: number;
+}) {
+  return (
+    <input
+      id={id}
+      type={type}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+      autoComplete={autoComplete}
+      inputMode={inputMode}
+      maxLength={maxLength}
+      aria-invalid={invalid || undefined}
+      className={cx(
+        textFieldClass,
+        invalid ? "border-lime-400" : "border-bone-50/25 focus:border-lime-400",
+      )}
+    />
+  );
+}
+
+export function TextArea({
+  value,
+  onChange,
+  placeholder,
+  invalid,
+  id,
+  rows = 4,
+  maxLength,
+}: {
+  value: string;
+  onChange: (next: string) => void;
+  placeholder?: string;
+  invalid?: boolean;
+  id?: string;
+  rows?: number;
+  maxLength?: number;
+}) {
+  return (
+    <textarea
+      id={id}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+      rows={rows}
+      maxLength={maxLength}
+      aria-invalid={invalid || undefined}
+      className={cx(
+        textFieldClass,
+        "resize-y leading-relaxed",
+        invalid ? "border-lime-400" : "border-bone-50/25 focus:border-lime-400",
+      )}
+    />
+  );
+}
+
 /* ── Select ───────────────────────────────────────────────── */
 
 /**

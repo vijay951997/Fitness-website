@@ -1,16 +1,15 @@
-import { plans, waLink } from "@/config/site";
+import { plans } from "@/config/site";
 import { Reveal } from "./Reveal";
 import {
   ArrowIcon,
-  Button,
   CheckIcon,
   Eyebrow,
   Heading,
   Lede,
   Section,
-  WhatsAppIcon,
   cx,
 } from "./ui";
+import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 export function Plans() {
   return (
@@ -105,19 +104,14 @@ export function Plans() {
                 ))}
               </ul>
 
-              <Button
-                href={waLink(
-                  `Hi Vijay, I'm interested in the ${plan.name} plan. Can you tell me more?`,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
+              <EnquiryButton
                 variant={plan.featured ? "dark" : "outline"}
                 className="mt-7 w-full sm:mt-9"
+                context={{ planName: plan.name, source: `${plan.name} plan` }}
               >
-                {plan.featured ? <WhatsAppIcon /> : null}
                 Enquire
                 {plan.featured ? null : <ArrowIcon />}
-              </Button>
+              </EnquiryButton>
             </article>
           </Reveal>
         ))}
