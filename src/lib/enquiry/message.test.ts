@@ -87,6 +87,17 @@ describe("buildEnquiryMessage", () => {
     assert.doesNotMatch(msg, /80 kg/);
   });
 
+  test("names the plan whose button was clicked", () => {
+    const msg = buildEnquiryMessage(base({ planName: "Foundation" }));
+    assert.match(msg, /ENQUIRING ABOUT\nPlan: Foundation/);
+  });
+
+  test("omits the plan section when the enquiry did not start from a plan", () => {
+    const msg = buildEnquiryMessage(base());
+    assert.doesNotMatch(msg, /ENQUIRING ABOUT/);
+    assert.doesNotMatch(msg, /Plan:/);
+  });
+
   test("lists selected services by their real names", () => {
     const msg = buildEnquiryMessage(
       base({ services: ["online-coaching", "nutrition-guidance"] }),

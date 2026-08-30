@@ -8,5 +8,6 @@
 
 export * from "./types.ts";
 export * from "./validate.ts";
+export * from "./targets.ts";
 export * from "./message.ts";
 export * from "./delivery.ts";

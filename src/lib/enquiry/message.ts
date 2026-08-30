@@ -107,6 +107,10 @@ export function buildEnquiryMessage(data: EnquiryData): string {
   const blocks: (string | null)[] = [
     "Hello, I would like to enquire about your fitness coaching services.",
 
+    section("ENQUIRING ABOUT", [
+      { label: "Plan", value: data.planName?.trim() || null },
+    ]),
+
     section("CLIENT DETAILS", [
       { label: "Name", value: data.name.trim() || null },
       { label: "Mobile", value: data.phone.trim() || null },

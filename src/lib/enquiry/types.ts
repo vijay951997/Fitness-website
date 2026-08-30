@@ -82,6 +82,11 @@ export type EnquiryData = {
   primaryGoal: PrimaryGoalId | null;
   /** Service ids from `services` in src/config/site.ts. */
   services: string[];
+  /**
+   * The pricing plan whose button was clicked, when the enquiry started
+   * from the plans table. Tells the trainer which tier prompted it.
+   */
+  planName: string | null;
   contactMethod: ContactMethodId;
 
   /* Free text */
@@ -106,6 +111,7 @@ export const EMPTY_ENQUIRY: EnquiryData = {
   experience: null,
   primaryGoal: null,
   services: [],
+  planName: null,
   contactMethod: "whatsapp",
   additionalMessage: "",
   units: "metric",

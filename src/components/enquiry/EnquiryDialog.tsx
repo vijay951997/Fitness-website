@@ -3,8 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ACTIVITY_LEVELS,
-  calculateCalorieTarget,
-  calculateMacros,
   kgToLb,
   lbToKg,
   round,
@@ -20,6 +18,7 @@ import {
   MAX_MESSAGE_LENGTH,
   PRIMARY_GOALS,
   buildEnquiryMessage,
+  computeTargets,
   createWhatsAppUrl,
   errorFor,
   isWhatsAppUrlSafe,
@@ -41,7 +40,6 @@ import {
   TextInput,
   useFieldId,
 } from "../tools/controls";
-import { EnquirySummary } from "./EnquirySummary";
 import { ServiceSelector } from "./ServiceSelector";
 import { closeEnquiry, useEnquiryDialog, type EnquiryContext } from "./store";
 
@@ -50,7 +48,7 @@ const DRAFT_KEY = storageKey("enquiry-draft");
 /** Only the parts of a draft worth restoring — never the derived targets. */
 type Draft = Omit<EnquiryData, "targets">;
 
-const STEPS = ["Your details", "Your goal", "Review"] as const;
+const STEPS = ["Your details", "Your goal"] as const;
 
 /**
  * Seeds the form from the visitor's calculator profile, then lets a saved
@@ -59,37 +57,9 @@ const STEPS = ["Your details", "Your goal", "Review"] as const;
  */
 function initialData(
   profile: ReturnType<typeof useProfile>["profile"],
-  isComplete: boolean,
   preselectedService?: string,
+  planName?: string,
 ): EnquiryData {
-  let targets: EnquiryData["targets"] = null;
-
-  if (isComplete) {
-    const target = calculateCalorieTarget({
-      sex: profile.sex,
-      age: profile.age as number,
-      weightKg: profile.weightKg as number,
-      heightCm: profile.heightCm as number,
-      activity: profile.activity,
-      goal: profile.goal,
-    });
-    if (target.ok) {
-      const macros = calculateMacros({
-        calories: target.data.targetCalories,
-        weightKg: profile.weightKg as number,
-        goal: profile.goal,
-      });
-      if (macros.ok) {
-        targets = {
-          calories: target.data.targetCalories,
-          proteinG: macros.data.protein.grams,
-          carbsG: macros.data.carbs.grams,
-          fatG: macros.data.fat.grams,
-        };
-      }
-    }
-  }
-
   // `sex`, `activity` and `goal` have defaults in the profile rather than
   // being nullable, so an untouched profile would hand us "male",
   // "moderate" and "loss" and the message would assert them as the
@@ -110,8 +80,9 @@ function initialData(
     activity: usedCalculators ? profile.activity : null,
     primaryGoal: usedCalculators ? profile.goal : null,
     units: profile.units,
-    targets,
+    targets: null,
     services: preselectedService ? [preselectedService] : [],
+    planName: planName ?? null,
   };
 
   const draft = read<Partial<Draft> | null>(DRAFT_KEY, null);
@@ -123,7 +94,8 @@ function initialData(
   return {
     ...seeded,
     ...draft,
-    targets,
+    targets: null,
+    planName: planName ?? null,
     services:
       preselectedService && !draft.services?.includes(preselectedService)
         ? [...(draft.services ?? []), preselectedService]
@@ -152,7 +124,7 @@ function EnquiryDialogInner({ context }: { context: EnquiryContext }) {
   // Seeded once, at mount: profile values pre-fill the form, a saved draft
   // overrides them, and later profile edits must not clobber typing.
   const [data, setData] = useState<EnquiryData>(() =>
-    initialData(profile, isComplete, context.serviceId),
+    initialData(profile, context.serviceId, context.planName),
   );
   const [step, setStep] = useState(0);
   const [showErrors, setShowErrors] = useState(false);
@@ -216,7 +188,10 @@ function EnquiryDialogInner({ context }: { context: EnquiryContext }) {
     write(DRAFT_KEY, { ...data, targets: undefined });
   }, [data, sent]);
 
-  const message = buildEnquiryMessage(data);
+  // Recomputed from the current form values, so the targets can never
+  // contradict the goal stated alongside them.
+  const outgoing: EnquiryData = { ...data, targets: computeTargets(data) };
+  const message = buildEnquiryMessage(outgoing);
   const url = createWhatsAppUrl(whatsapp.number, message);
   const tooLong = !isWhatsAppUrlSafe(url);
 
@@ -284,6 +259,11 @@ function EnquiryDialogInner({ context }: { context: EnquiryContext }) {
             <p className="label mt-2 text-bone-500">
               Step {step + 1} of {STEPS.length} — {STEPS[step]}
             </p>
+            {data.planName && (
+              <p className="label mt-2 text-lime-400">
+                About the {data.planName} plan
+              </p>
+            )}
           </div>
           <button
             type="button"
@@ -587,12 +567,6 @@ function EnquiryDialogInner({ context }: { context: EnquiryContext }) {
                   invalid={Boolean(err("additionalMessage"))}
                 />
               </Field>
-            </div>
-          )}
-
-          {step === 2 && (
-            <div className="grid gap-6">
-              <EnquirySummary data={data} />
 
               {showErrors && errors.length > 0 && (
                 <ul
@@ -611,11 +585,12 @@ function EnquiryDialogInner({ context }: { context: EnquiryContext }) {
               {tooLong && (
                 <p role="alert" className="text-sm text-lime-400">
                   That message is too long to send reliably through WhatsApp.
-                  Please shorten the &ldquo;anything else&rdquo; note.
+                  Please shorten the note above.
                 </p>
               )}
             </div>
           )}
+
         </div>
 
         {/* Footer */}
