@@ -25,6 +25,8 @@ export type Profile = {
   age: number | null;
   heightCm: number | null;
   weightKg: number | null;
+  /** Where they want to get to — used by the timeline and deficit tools. */
+  targetWeightKg: number | null;
   activity: ActivityLevelId;
   goal: GoalId;
 };
@@ -35,6 +37,7 @@ export const EMPTY_PROFILE: Profile = {
   age: null,
   heightCm: null,
   weightKg: null,
+  targetWeightKg: null,
   activity: "moderate",
   goal: "loss",
 };
@@ -63,7 +66,11 @@ function subscribe(listener: () => void): () => void {
 
 /** Must return a referentially stable value or React will loop. */
 function getSnapshot(): Profile {
-  if (snapshot === null) snapshot = read<Profile>(KEY, EMPTY_PROFILE);
+  if (snapshot === null) {
+    // Merge over the defaults so a profile saved before a field was added
+    // still loads, with the new field simply unset.
+    snapshot = { ...EMPTY_PROFILE, ...read<Partial<Profile>>(KEY, {}) };
+  }
   return snapshot;
 }
 

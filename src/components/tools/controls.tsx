@@ -97,6 +97,51 @@ export function NumberInput({
   );
 }
 
+/* ── Select ───────────────────────────────────────────────── */
+
+/**
+ * Native select, styled to match. Used where a segmented control would
+ * have too many options to fit — the activity list runs to 34 entries.
+ */
+export function Select({
+  value,
+  onChange,
+  groups,
+  id,
+}: {
+  value: string;
+  onChange: (next: string) => void;
+  groups: { label: string; options: { id: string; label: string }[] }[];
+  id?: string;
+}) {
+  return (
+    <div className="relative mt-3">
+      <select
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full appearance-none border border-bone-50/25 bg-ink-950 px-4 py-3.5 pr-10 text-base text-bone-50 transition-colors focus:border-lime-400 focus:outline-none"
+      >
+        {groups.map((group) => (
+          <optgroup key={group.label} label={group.label}>
+            {group.options.map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.label}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-lime-400"
+      >
+        ▾
+      </span>
+    </div>
+  );
+}
+
 /* ── Segmented control ────────────────────────────────────── */
 
 export type Segment<T extends string> = {

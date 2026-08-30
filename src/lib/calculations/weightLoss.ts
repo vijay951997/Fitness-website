@@ -37,6 +37,11 @@ export type DeficitOutput = {
   levelLabel: string;
   /** True when the requested deficit was reduced to stay above the floor. */
   adjustedForSafety: boolean;
+  /**
+   * True when maintenance already sits at or below the safe floor, so no
+   * deficit can be recommended at all.
+   */
+  noSafeDeficit: boolean;
 };
 
 export function calculateDeficit(
@@ -56,8 +61,18 @@ export function calculateDeficit(
   const floor = minimumCalories(input.sex);
 
   const requested = input.maintenanceCalories - level.kcal;
-  const adjustedForSafety = requested < floor;
-  const targetCalories = roundCalories(adjustedForSafety ? floor : requested);
+
+  // Raise to the floor, but never above maintenance. Someone very small or
+  // elderly can have a maintenance level that already sits below the floor;
+  // clamping up alone would produce a negative "deficit" and report a
+  // surplus as weight loss. For them the honest answer is that no deficit
+  // is advisable, so the target becomes maintenance and the deficit zero.
+  const targetCalories = roundCalories(
+    Math.min(Math.max(requested, floor), input.maintenanceCalories),
+  );
+
+  const adjustedForSafety = targetCalories > requested;
+  const noSafeDeficit = input.maintenanceCalories <= floor;
   const dailyDeficit = roundCalories(input.maintenanceCalories - targetCalories);
   const weeklyDeficit = dailyDeficit * 7;
 
@@ -69,6 +84,7 @@ export function calculateDeficit(
     weeklyWeightChangeKg: round(weeklyDeficit / KCAL_PER_KG_FAT, 2),
     levelLabel: level.label,
     adjustedForSafety,
+    noSafeDeficit,
   });
 }
 

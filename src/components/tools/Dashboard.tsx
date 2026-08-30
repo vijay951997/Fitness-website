@@ -10,6 +10,11 @@ import { BmiPanel } from "./panels/BmiPanel";
 import { MacroPanel } from "./panels/MacroPanel";
 import { WaterPanel } from "./panels/WaterPanel";
 import { IdealWeightPanel } from "./panels/IdealWeightPanel";
+import { DeficitPanel } from "./panels/DeficitPanel";
+import { TimelinePanel } from "./panels/TimelinePanel";
+import { BodyFatPanel } from "./panels/BodyFatPanel";
+import { WorkoutPanel } from "./panels/WorkoutPanel";
+import { StepsPanel } from "./panels/StepsPanel";
 
 type Tool = {
   id: string;
@@ -62,6 +67,41 @@ const TOOLS: Tool[] = [
     blurb: "The band that matches a healthy BMI at your height.",
     Panel: IdealWeightPanel,
   },
+  {
+    id: "deficit",
+    label: "Deficit",
+    title: "Calorie deficit",
+    blurb: "How far below maintenance to eat, and what that means per week.",
+    Panel: DeficitPanel,
+  },
+  {
+    id: "timeline",
+    label: "Timeline",
+    title: "Weight change timeline",
+    blurb: "Roughly how long your target might take.",
+    Panel: TimelinePanel,
+  },
+  {
+    id: "body-fat",
+    label: "Body fat",
+    title: "Body fat percentage",
+    blurb: "Estimated from tape measurements, U.S. Navy method.",
+    Panel: BodyFatPanel,
+  },
+  {
+    id: "workout",
+    label: "Workout",
+    title: "Workout calories",
+    blurb: "Energy cost of a session, from its MET value.",
+    Panel: WorkoutPanel,
+  },
+  {
+    id: "steps",
+    label: "Steps",
+    title: "Steps to calories",
+    blurb: "Distance and energy from a day's step count.",
+    Panel: StepsPanel,
+  },
 ];
 
 /**
@@ -100,8 +140,8 @@ export function Dashboard() {
 
       <Reveal delay={160}>
         <div className="mt-10">
-          {/* Horizontally scrollable on phones so six tabs never wrap into
-              an unusable stack. */}
+          {/* Horizontally scrollable so eleven tabs never wrap into an
+              unusable stack — this matters on desktop too, not just phones. */}
           <div
             role="tablist"
             aria-label="Calculators"

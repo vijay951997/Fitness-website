@@ -200,6 +200,35 @@ describe("calorie deficit", () => {
     assert.equal(r.data.dailyDeficit, 100);
   });
 
+  test("never reports a negative deficit when maintenance is below the floor", () => {
+    // A 60-year-old, 150cm, 40kg sedentary woman maintains on about 1052
+    // kcal, which is already under the 1200 floor. Clamping the target up
+    // to 1200 alone would yield a deficit of -148 and describe a surplus
+    // as weight loss.
+    const r = calculateDeficit({
+      maintenanceCalories: 1052,
+      level: "aggressive",
+      sex: "female",
+    });
+    assert.ok(r.ok);
+    assert.equal(r.data.noSafeDeficit, true);
+    assert.equal(r.data.targetCalories, 1052, "target should equal maintenance");
+    assert.equal(r.data.dailyDeficit, 0);
+    assert.equal(r.data.weeklyWeightChangeKg, 0);
+    assert.ok(r.data.dailyDeficit >= 0, "deficit must never be negative");
+  });
+
+  test("noSafeDeficit is false in the ordinary case", () => {
+    const r = calculateDeficit({
+      maintenanceCalories: 2759,
+      level: "moderate",
+      sex: "male",
+    });
+    assert.ok(r.ok);
+    assert.equal(r.data.noSafeDeficit, false);
+    assert.equal(r.data.dailyDeficit, 500);
+  });
+
   test("women are clamped at 1200 rather than 1500", () => {
     const r = calculateDeficit({
       maintenanceCalories: 1400,
