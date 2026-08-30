@@ -1,5 +1,4 @@
 import { About } from "@/components/About";
-import { CalorieCalculator } from "@/components/CalorieCalculator";
 import { Contact } from "@/components/Contact";
 import { Dashboard } from "@/components/tools/Dashboard";
 import { Faq } from "@/components/Faq";
@@ -44,7 +43,6 @@ export default function Home() {
         <Testimonials />
         <Plans />
         <Faq />
-        <CalorieCalculator />
         <Dashboard />
         <Contact />
       </main>

@@ -6,9 +6,8 @@ import { cx } from "../ui";
 /**
  * Form primitives for the calculators.
  *
- * The visual language is lifted from the existing CalorieCalculator so the
- * tools look like the rest of the site: `.label` mono captions, square
- * corners, lime as the only accent, ink-950 input wells.
+ * The visual language follows the rest of the site: `.label` mono
+ * captions, square corners, lime as the only accent, ink-950 input wells.
  */
 
 /* ── Field wrapper ────────────────────────────────────────── */
