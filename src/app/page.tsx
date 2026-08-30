@@ -1,5 +1,6 @@
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
+import { EnquiryDialog } from "@/components/enquiry/EnquiryDialog";
 import { Dashboard } from "@/components/tools/Dashboard";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
@@ -49,6 +50,7 @@ export default function Home() {
 
       <Footer />
       <WhatsAppFab />
+      <EnquiryDialog />
     </>
   );
 }

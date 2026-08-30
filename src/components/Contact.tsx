@@ -1,6 +1,7 @@
-import { enquiryFormUrl, site, waLink, whatsapp } from "@/config/site";
+import { site, telLink, waLink, whatsapp } from "@/config/site";
 import { Reveal } from "./Reveal";
-import { ArrowIcon, Button, Eyebrow, Heading, StripeBar, WhatsAppIcon } from "./ui";
+import { ArrowIcon, Button, Eyebrow, Heading, PhoneIcon, StripeBar } from "./ui";
+import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 export function Contact() {
   const details = [
@@ -58,24 +59,12 @@ export function Contact() {
 
           <Reveal delay={150}>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Button
-                href={waLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-              >
-                <WhatsAppIcon />
-                Message on WhatsApp
-              </Button>
-              <Button
-                href={enquiryFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-              >
-                Fill the enquiry form
-                <ArrowIcon />
+              <EnquiryButton size="lg" context={{ source: "contact" }}>
+                Start your enquiry
+              </EnquiryButton>
+              <Button href={telLink()} variant="outline" size="lg">
+                <PhoneIcon />
+                Call {whatsapp.display}
               </Button>
             </div>
           </Reveal>

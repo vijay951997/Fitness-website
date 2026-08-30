@@ -57,8 +57,10 @@ export function waLink(message: string = whatsapp.defaultMessage) {
   return `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
 
-/** The detailed intake form you already use. */
-export const enquiryFormUrl = "https://whatsform.com/1donJn";
+/** Tap-to-call link. Same number as WhatsApp. */
+export function telLink() {
+  return `tel:+${whatsapp.number}`;
+}
 
 export const nav = [
   { label: "About", href: "#about" },

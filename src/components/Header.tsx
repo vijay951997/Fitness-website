@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { nav, site, waLink } from "@/config/site";
-import { Button, WhatsAppIcon, cx } from "./ui";
+import { nav, site } from "@/config/site";
+import { cx } from "./ui";
+import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,10 +60,9 @@ export function Header() {
               `inline-flex`, which Tailwind emits after `.hidden`, so the
               utility loses and the button stays visible on phones. */}
           <div className="hidden sm:block">
-            <Button href={waLink()} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon />
+            <EnquiryButton context={{ source: "header" }}>
               Enquire
-            </Button>
+            </EnquiryButton>
           </div>
 
           <button
@@ -113,17 +113,14 @@ export function Header() {
               </span>
             </Link>
           ))}
-          <Button
-            href={waLink()}
-            target="_blank"
-            rel="noopener noreferrer"
+          <EnquiryButton
             size="lg"
             className="mt-6 w-full"
+            context={{ source: "mobile menu" }}
             onClick={() => setOpen(false)}
           >
-            <WhatsAppIcon />
-            Message on WhatsApp
-          </Button>
+            Start your enquiry
+          </EnquiryButton>
         </nav>
       </div>
     </header>

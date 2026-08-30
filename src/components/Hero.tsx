@@ -1,7 +1,8 @@
-import { enquiryFormUrl, site, waLink } from "@/config/site";
+import { site, telLink } from "@/config/site";
 import { Portrait } from "./Portrait";
 import { Reveal } from "./Reveal";
-import { ArrowIcon, Button, Stars, StripeBar, WhatsAppIcon } from "./ui";
+import { Button, PhoneIcon, Stars, StripeBar } from "./ui";
+import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 const stats = [
   { v: "5.0", l: "Google rating" },
@@ -70,24 +71,12 @@ export function Hero() {
 
         <Reveal delay={210}>
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
-            <Button
-              href={waLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-            >
-              <WhatsAppIcon />
-              Start on WhatsApp
-            </Button>
-            <Button
-              href={enquiryFormUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              size="lg"
-            >
-              Get a plan quote
-              <ArrowIcon />
+            <EnquiryButton size="lg" context={{ source: "hero" }}>
+              Start your enquiry
+            </EnquiryButton>
+            <Button href={telLink()} variant="outline" size="lg">
+              <PhoneIcon />
+              Call Vijay
             </Button>
           </div>
         </Reveal>

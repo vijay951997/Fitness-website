@@ -1,6 +1,7 @@
-import { services, waLink } from "@/config/site";
+import { services } from "@/config/site";
 import { Reveal } from "./Reveal";
 import { ArrowIcon, Eyebrow, Heading, Lede, Section } from "./ui";
+import { EnquiryButton } from "./enquiry/EnquiryButton";
 
 /**
  * Full-width numbered rows rather than three equal cards — gives each
@@ -76,18 +77,14 @@ export function Services() {
                   ))}
                 </ul>
 
-                <a
-                  href={waLink(
-                    `Hi Vijay, I'd like to know more about your ${service.title} program.`,
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  /* py-3.5 keeps this a comfortable touch target on phones */
-                  className="label mt-4 inline-flex items-center gap-2 py-3.5 text-lime-400 transition-colors hover:text-lime-500"
+                <EnquiryButton
+                  variant="outline"
+                  className="mt-4 border-0 px-0 py-3.5 text-lime-400 hover:text-lime-500"
+                  context={{ serviceId: service.id, source: service.title }}
                 >
                   Ask about this
                   <ArrowIcon />
-                </a>
+                </EnquiryButton>
               </div>
             </article>
           </Reveal>
