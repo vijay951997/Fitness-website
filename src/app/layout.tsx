@@ -124,14 +124,15 @@ export default function RootLayout({
       lang="en-IN"
       className={`${anton.variable} ${inter.variable} ${mono.variable}`}
     >
-      <head>
+      <body className="antialiased">
         {/* Without JS the reveal class never gets its counterpart, so
-            neutralise it outright — content must never stay invisible. */}
+            neutralise it outright — content must never stay invisible.
+            Lives in <body> because a root layout must not declare its own
+            <head>; React hoists the style into the document head. */}
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-      </head>
-      <body className="antialiased">
+
         <script
           type="application/ld+json"
           // Static, author-controlled object — safe to inject.
